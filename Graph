@@ -1,0 +1,8 @@
+import java.util.List;
+import java.util.LinkedList;
+public class Graph {
+	public List<List<Integer>> adjlist;
+	public Graph(List<List<Integer>> list) {
+		this.adjlist = list;
+	}
+}
