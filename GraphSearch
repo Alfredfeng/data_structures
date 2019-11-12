@@ -1,0 +1,34 @@
+public static void DFS(Graph graph, int node, Set<Integer> visited) {
+		for(List<Integer> ele: graph.adjlist) {
+			for(int i = 0 ; i < ele.size(); i ++) {
+				if(ele.get(0) == node && !visited.contains(node)) {
+					System.out.print(node+"->");
+					visited.add(node);
+					if(ele.size() > 1) {
+						for(int j = 1 ; j < ele.size(); j ++) {
+							DFS(graph, ele.get(j), visited);
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	public static void BFS(Graph graph, Set<Integer> visited) {
+		Queue<Integer> queue = new LinkedList<>();
+		queue.add(graph.adjlist.get(0).get(0));
+		visited.add(graph.adjlist.get(0).get(0));
+		while(!queue.isEmpty()) {
+			int node = queue.poll();
+			//process the node
+			System.out.print(node+"->");
+			for(List<Integer> ele: graph.adjlist) {
+				for(int ee: ele) {
+					if(!visited.contains(ee)) {
+						queue.add(ee);
+						visited.add(ee);
+					}
+				}
+			}
+		}
+	}
