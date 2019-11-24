@@ -34,15 +34,19 @@ public static void BFS(Graph graph, Set<Integer> visited) {
 //loop detection using dfs
 //returns true if the given graph represented by an adjacency map contains at least one loop/cycle
 //returns false if the given graph doesn't contain any cycle
+//loop detection using dfs
 private boolean dfs(Map<Integer, List<Integer>> adjmap, boolean[] visited, int start){
 	if(visited[start])
 	    return true;
+	//push the node in the recursion stack(the visited array)
 	visited[start] = true;
+
 	List<Integer> children = adjmap.get(start);
 	for(int ele: children){
 	    if(dfs(adjmap, visited, ele))
-		return false;//loop detected
+		return true;//loop detected
 	}
+	//pop the node from the recursion stack(the visited array)
 	visited[start] = false;
 	return false;
 }
